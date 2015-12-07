@@ -1,0 +1,6 @@
+Experiment,5
+Components,1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 2 9V DC Power supply; 2 potentiometers; 1 Operational Amplifier (ST LM358N)
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We supplied 18V DC power supply to the Op-Amp and 9V DC power supply to the Wheatstone bridge.
+,3. The voltage difference of the Wheatstone bridge was fed to the Op-Amp configured as a non-inverting voltage amplifier using the Potentiometers to induce Gain.
+Results,With no force exerted we obtained a reading of ~3.4 V. Upon exerting force we detected readings corresponding to a gain of ~5 mV per lb of force.

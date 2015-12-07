@@ -1,0 +1,7 @@
+Experiment,8
+Components,Same as Experiment 6; 1 Arduino Uno R3; 4 Diodes
+Procedure,1. Sensor circuit is connected to Arduino in Input A0
+,2. Arduino script written to display readings
+,3. Output was found to possible go out of range with fresh batteries
+,4. Diodes were connected as voltage reducers to bring down output voltage to Arduino limits.
+Results,5. Arduino can measure the output of the sensor and display it using Arduino script

@@ -1,0 +1,8 @@
+Experiment,9
+Components,2 * Experiment 6 components; 8 Diodes; 1 Arduino Uno R3
+Procedure,1. 2 sensor circuits were connected as inputs to the Arduino with Diodes acting as Voltage reducers.
+,2. Inputs were read at Analog inputs A0 and A1.
+,3. 2 Circuits were interconnected to give common ground voltage.
+,4. Arduino script to display dual readings was written
+Results,1. Successfully read two different serial inputs with a single Arduino.
+,2. Large Amount of noise in both circuits.

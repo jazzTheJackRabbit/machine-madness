@@ -1,0 +1,71 @@
+Experiment 1,
+Components,"1 Force Sensitive Resistor; 5V Power Source from Arduino; 1 multimeter."
+Procedure,1. We connected the FSR as a sensor to the Arduino.
+,2. We exerted varying amounts of force on the FSR and checked readings on the multimeter.
+Results,1. FSR readings were highly inaccurate.
+,2. Similar amounts of force resulted in different readings.
+,3. We detected a drift in readings upon applying consistent force.
+Experiment 2,
+Components,"1 Strain Gauge Load Sensor; 1 Multimeter"
+Procedure,1. We connected the variable resistor of the Sensor to the Multimeter set in resistance mode.
+,2. We exerted varying amounts of force upon the Sensor and recorded readings.
+Results,We detected a change of 0.1 Ohms upon exerting 15 kg of force.
+Experiment 3,
+Components,"1 Strain Gauge Load Sensor; 3 51 Ohms Resistors; 1 Multimeter; 1 9V DC Power supply"
+Procedure,1. The variable resistor of the sensor was connected in the form of a wheatstone bridge with the 51 ohms resistors.
+,2. Power was supplied to the wheatstone bridge and Voltage difference was detected across the balance points of the Wheatstone bridge.
+Results,Small change in voltage detected ~0.1 milliVolts per 10 lbs of force exerted.
+Experiment 4,
+Components,"1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 1 9V DC Power supply"
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We found a voltage of ~2 milliVolts at the balance points with no force exerted.
+,3. We exerted varying amounts of force upon the sensor and recorded readings on the multimeter in voltage mode.
+Results,We found a steady increase in voltage to the order of the 1 mV per 10 lbs of force.
+Experiment 5,
+Components,"1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 2 9V DC Power supply; 2 potentiometers; 1 Operational Amplifier (ST LM358N)"
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We supplied 18V DC power supply to the Op-Amp and 9V DC power supply to the Wheatstone bridge.
+,3. The voltage difference of the Wheatstone bridge was fed to the Op-Amp configured as a non-inverting voltage amplifier using the Potentiometers to induce Gain.
+Results,"With no force exerted we obtained a reading of ~3.4 V. Upon exerting force we detected readings corresponding to a gain of ~5 mV per lb of force."
+Experiment 6,
+Components,"1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 2 9V DC Power supply; 1 10 kOhm Resistor; 1 Operational Amplifier (ST LM358N)"
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We supplied 18V DC power supply to the Op-Amp and 9V DC power supply to the Wheatstone bridge.
+,3. The voltage difference of the Wheatstone bridge was fed to the Op-Amp configured as a non-inverting voltage amplifier using the 1 kOhm resistor to induce Gain.
+Results,"With no force exerted we obtained a reading of ~2.5 V. Upon exerting force we detected readings corresponding to a gain of ~10 mV per lb of force."
+Experiment 7,
+Components,"1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 2 9V DC Power supply; 2 10 kOhm Resistor; 1 Operational Amplifier (ST LM358N)"
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We supplied 18V DC power supply to the Op-Amp and 9V DC power supply to the Wheatstone bridge.
+,3. The voltage difference of the Wheatstone bridge was fed to the Op-Amp configured as a non-inverting voltage amplifier using the 2 kOhm resistor to induce Gain.
+Results,"With no force exerted we obtained a reading of ~4 V. Upon exerting force we detected readings corresponding to a gain of ~12 mV per lb of force."
+Experiment 8,
+Components,"Same as Experiment 6; 1 Arduino Uno R3; 4 Diodes"
+Procedure,1. Sensor circuit is connected to Arduino in Input A0
+,2. Arduino script written to display readings
+,3. Output was found to possible go out of range with fresh batteries
+,4. Diodes were connected as voltage reducers to bring down output voltage to Arduino limits.
+Results,5. Arduino can measure the output of the sensor and display it using Arduino script
+Experiment 9,
+Components,"2 * Experiment 6 components; 8 Diodes; 1 Arduino Uno R3"
+Procedure,1. 2 sensor circuits were connected as inputs to the Arduino with Diodes acting as Voltage reducers.
+,2. Inputs were read at Analog inputs A0 and A1.
+,3. 2 Circuits were interconnected to give common ground voltage.
+,4. Arduino script to display dual readings was written
+Results,1. Successfully read two different serial inputs with a single Arduino.
+,2. Large Amount of noise in both circuits.
+Experiment 10,
+Components,"Arduino Bluetooth transceiver; Bluetooth capable Android phone; suitable Android App; 3 10 kOhm resistors; basic Voltage divider circuit"
+Procedure,1. Android App was developed to handle and Display Bluetooth input
+,2. Bluetooth transceiver was connected to the Arduino Uno R3 using the resistors to provide sufficient power and not overload it.
+,3. Voltage divider output was connected to the Arduino input A0
+Results,1. Arduino successfully transmitted analog readings to Bluetooth transceiver.
+,2. Bluetooth transceiver successfully transmitted readings to Android app
+,3. Android app displays readings accurately
+Experiment 11,
+Components,"Experiment 9 components; Experiment 10 components; 1 shoe"
+Procedure,1. The 2 sets of sensor circuits were connected to the Arduino Uno.
+,2. Sensors were attached to shoe in a suitable position
+,3. Bluetooth transceiver was connected to the Arduino Uno
+,4. Android app was activated and readings were observed
+Results,Android app was successfully able to receive sensor inputs

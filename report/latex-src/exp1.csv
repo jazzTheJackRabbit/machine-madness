@@ -1,0 +1,7 @@
+Experiment,1
+Components,1 Force Sensitive Resistor; 5V Power Source from Arduino; 1 multimeter.
+Procedure,1. We connected the FSR as a sensor to the Arduino.
+,2. We exerted varying amounts of force on the FSR and checked readings on the multimeter.
+Results,1. FSR readings were highly inaccurate.
+,2. Similar amounts of force resulted in different readings.
+,3. We detected a drift in readings upon applying consistent force.

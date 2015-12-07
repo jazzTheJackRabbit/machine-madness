@@ -1,0 +1,5 @@
+Experiment,2
+Components,1 Strain Gauge Load Sensor; 1 Multimeter
+Procedure,1. We connected the variable resistor of the Sensor to the Multimeter set in resistance mode.
+,2. We exerted varying amounts of force upon the Sensor and recorded readings.
+Results,We detected a change of 0.1 Ohms upon exerting 15 kg of force.

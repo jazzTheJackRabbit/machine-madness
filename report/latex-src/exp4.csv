@@ -1,0 +1,6 @@
+Experiment,4
+Components,1 Strain Gauge Load Sensor; 2 51 Ohms Resistors; 1 Multimeter; 1 9V DC Power supply
+Procedure,1. We connected the fixed resistor and the variable resistor of the load sensor as one arm of the wheatstone bridge and the 2 51  ohms resistors as the other arm.
+,2. We found a voltage of ~2 milliVolts at the balance points with no force exerted.
+,3. We exerted varying amounts of force upon the sensor and recorded readings on the multimeter in voltage mode.
+Results,We found a steady increase in voltage to the order of the 1 mV per 10 lbs of force.

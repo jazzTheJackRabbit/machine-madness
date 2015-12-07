@@ -1,0 +1,8 @@
+Experiment,16
+Components,2 * Experiment 14 components; Experiment 10 components
+Procedure,1. The 2 sets of sensor circuits were connected to the Arduino Uno.
+,2. Sensors were attached to shoe in a suitable position
+,3. Bluetooth transceiver was connected to the Arduino Uno
+,4. Android app was activated and readings were observed
+Results,1. We were able to detect the weight placed on the shoe and perform analysis of the same.
+,2. We found that the amount of noise had increased to relatively high levels either due to the Bluetooth transceiver or the Arduino

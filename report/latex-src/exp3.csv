@@ -1,0 +1,5 @@
+Experiment,3
+Components,1 Strain Gauge Load Sensor; 3 51 Ohms Resistors; 1 Multimeter; 1 9V DC Power supply
+Procedure,1. The variable resistor of the sensor was connected in the form of a wheatstone bridge with the 51 ohms resistors.
+,2. Power was supplied to the wheatstone bridge and Voltage difference was detected across the balance points of the Wheatstone bridge.
+Results,Small change in voltage detected ~0.1 milliVolts per 10 lbs of force exerted.

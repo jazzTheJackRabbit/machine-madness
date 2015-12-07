@@ -1,0 +1,259 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{cite6}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Academy}{A.}%
+     {Magnet}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AM1}
+  \strng{fullhash}{AM1}
+  \field{sortinit}{A}
+  \field{howpublished}{\href{https://nationalmaglab.org/education/magnet-academy/watch-play/interactive/wheatstone-bridge}{[url]}}
+  \field{title}{{Wheatstone Bridge}}
+\endentry
+
+\entry{cite8}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {C}{C}%
+     {Wiest~Pieter}{W.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CWP1}
+  \strng{fullhash}{CWP1}
+  \field{sortinit}{C}
+  \field{howpublished}{\href{http://www.google.com/patents/US20100258358}{[url]}}
+  \field{title}{{Weight measuring shoe having a retractable scale }}
+\endentry
+
+\entry{cite5}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Crowder}{C.}%
+     {R~M}{R.~M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CRM1}
+  \strng{fullhash}{CRM1}
+  \field{sortinit}{C}
+  \field{howpublished}{\href{http://www.southampton.ac.uk/~rmc1/robotics/artactile.htm}{[url]}}
+  \field{title}{{Tactile Sensors}}
+\endentry
+
+\entry{cite4}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dolan}{D.}%
+     {Brian}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DB1}
+  \strng{fullhash}{DB1}
+  \field{sortinit}{D}
+  \field{howpublished}{\href{http://mobihealthnews.com/33256/prediction-fitness-tracker-market-to-hit-2-2-billion-this-year/}{[url]}}
+  \field{title}{{Fitness Tracker Market Prediction}}
+\endentry
+
+\entry{cite9}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Guzman}{G.}%
+     {Rudy}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GR1}
+  \strng{fullhash}{GR1}
+  \field{sortinit}{G}
+  \field{howpublished}{\href{http://www.google.com/patents/US7404263}{[url]}}
+  \field{title}{{Footwear with force sensing device }}
+\endentry
+
+\entry{cite10}{misc}{}
+  \name{author}{5}{}{%
+    {{}%
+     {JR}{J.}%
+     {Nicholas A.~Terrafranca}{N.~A.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sarrafzadeh}{S.}%
+     {Majid}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Collins}{C.}%
+     {Eric}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Foad~Dabiri}{F.~D.}%
+     {Hyduke~Noshadi}{H.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Massey}{M.}%
+     {Tammara}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{JNAT+1}
+  \strng{fullhash}{JNATSMCEFDHNMT1}
+  \field{sortinit}{J}
+  \field{howpublished}{\href{http://www.google.com/patents/US7726206}{[url]}}
+  \field{title}{{Foot pressure alert and sensing system}}
+\endentry
+
+\entry{cite2}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Jr.}{J.}%
+     {William C.~Shiel}{W.~C.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{JWCS1}
+  \strng{fullhash}{JWCS1}
+  \field{sortinit}{J}
+  \field{howpublished}{\href{http://www.sharelatex.com}{[url]}}
+  \field{title}{{Effects of Weight Loss}}
+\endentry
+
+\entry{cite7}{misc}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Luger}{L.}%
+     {E.~J.}{E.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nissan}{N.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Karpf}{K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Steinberg}{S.}%
+     {E.~L.}{E.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dekel}{D.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LEJ+1}
+  \strng{fullhash}{LEJNMKASELDS1}
+  \field{sortinit}{L}
+  \field{howpublished}{\href{http://www.researchgate.net/publictopics.PublicPostFileLoader.html?id=5367a6e3d2fd6488428b459a&key=9c9605367a6e3e3d55}{[url]}}
+  \field{title}{{Patterns of weight distribution under the metatarsal heads}}
+\endentry
+
+\entry{cite3}{misc}{}
+  \field{sortinit}{M}
+  \field{howpublished}{\href{http://www.marketsandmarkets.com/Market-Reports/weight-loss-obesity-management-market-1152.html}{[url]}}
+  \field{title}{{marketsandmarkets.com}}
+\endentry
+
+\entry{cite1}{misc}{}
+  \name{author}{4}{}{%
+    {{}%
+     {ML}{M.}%
+     {Butryn}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {S}{S}%
+     {Phelan}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {JO}{J.}%
+     {Hill}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {RR}{R.}%
+     {Wing}{W.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MB+1}
+  \strng{fullhash}{MBSPJHRW1}
+  \field{sortinit}{M}
+  \field{howpublished}{\href{http://www.sharelatex.com}{[url]}}
+  \field{title}{{Consistent self-monitoring of weight: a key component of
+  successful weight loss maintenance}}
+\endentry
+
+\entry{cite11}{misc}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Schrock}{S.}%
+     {Allan~M.}{A.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nurse}{N.}%
+     {Matthew~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pisciotta}{P.}%
+     {Jeffrey~C.}{J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Amos}{A.}%
+     {Michael~S.}{M.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Owings}{O.}%
+     {Andrew~A.}{A.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Meschter}{M.}%
+     {James~C.}{J.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SAM+1}
+  \strng{fullhash}{SAMNMAPJCAMSOAAMJC1}
+  \field{sortinit}{S}
+  \field{howpublished}{\href{http://www.google.com/patents/US20100063778}{[url]}}
+  \field{title}{{Footwear Having Sensor System }}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

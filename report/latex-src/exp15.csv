@@ -1,0 +1,6 @@
+Experiment,15
+Components,1 Strain Gauge Load Sensor; two 5.1 kOhm resistors; 1 INA125P Instrumentation Amplifier; 1 Multimeter; 1 potentiometer
+Procedure,1. Connect load sensor and two 5.1 kOhm resistors as a Wheatstone bridge
+,2. Connect Excitation points of Wheatstone bridge as inputs to INA125P In-Amp with potentiometer set to 500 Ohm as gain
+,3. Measure INA125P output upon applying various levels of force to the load sensor.
+Results,Steady increase in output of ~0.2 V per 10kg applied force with minimal amount of noise

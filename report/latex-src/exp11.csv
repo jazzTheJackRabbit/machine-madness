@@ -1,0 +1,7 @@
+Experiment,11
+Components,Experiment 9 components; Experiment 10 components; 1 shoe
+Procedure,1. The 2 sets of sensor circuits were connected to the Arduino Uno.
+,2. Sensors were attached to shoe in a suitable position
+,3. Bluetooth transceiver was connected to the Arduino Uno
+,4. Android app was activated and readings were observed
+Results,Android app was successfully able to receive sensor inputs

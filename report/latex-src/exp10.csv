@@ -1,0 +1,8 @@
+Experiment,10
+Components,Arduino Bluetooth transceiver; Bluetooth capable Android phone; suitable Android App; 3 10 kOhm resistors; basic Voltage divider circuit
+Procedure,1. Android App was developed to handle and Display Bluetooth input
+,2. Bluetooth transceiver was connected to the Arduino Uno R3 using the resistors to provide sufficient power and not overload it.
+,3. Voltage divider output was connected to the Arduino input A0
+Results,1. Arduino successfully transmitted analog readings to Bluetooth transceiver.
+,2. Bluetooth transceiver successfully transmitted readings to Android app
+,3. Android app displays readings accurately
