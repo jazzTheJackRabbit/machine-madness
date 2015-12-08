@@ -1,3 +1,8 @@
+
+# 
+# Creates TEAM statistics for all tournament matches in a season (for all seasons)
+# 
+
 import pandas as pd
 import numpy as np
 import re
@@ -43,9 +48,6 @@ def main():
 
 			trainingStatsForAllTeams = trainingStatsForAllTeams.append(trainingStatsForTargetTeam,ignore_index=True)
 
-		print("Wrote: "+str(all_teams.shape[0]))
-		trainingStatsForAllTeams.to_csv(ROOT_DIR+"data/structured/trainingStatsForAllTeams.csv")	
-
-	
+		trainingStatsForAllTeams.to_csv(ROOT_DIR+"data/structured/average_team_stats_for_all_teams.csv")
 
 main()
