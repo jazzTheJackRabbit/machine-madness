@@ -1,16 +1,15 @@
+import pandas as pd
+import numpy as np
+import re
 
 # 
 # Creates TEAM statistics for all tournament matches in a season (for all seasons)
 # 
 
-import pandas as pd
-import numpy as np
-import re
-
 ROOT_DIR = "../"
 
-def main():
-	dataset = pd.read_csv(ROOT_DIR+"data/raw/regular_season_detailed_results.csv");
+def create(input_season_data_file_path,output_team_statistic_file_path):
+	dataset = pd.read_csv(ROOT_DIR+input_season_data_file_path);
 	all_teams = pd.read_csv(ROOT_DIR+"data/raw/teams.csv")
 
 	cols = list(dataset.columns)
@@ -48,6 +47,4 @@ def main():
 
 			trainingStatsForAllTeams = trainingStatsForAllTeams.append(trainingStatsForTargetTeam,ignore_index=True)
 
-		trainingStatsForAllTeams.to_csv(ROOT_DIR+"data/structured/average_team_stats_for_all_teams.csv")
-
-main()
+		trainingStatsForAllTeams.to_csv(ROOT_DIR+output_team_statistic_file_path)
