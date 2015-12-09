@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestClassifier, AdaBoostRegressor, GradientBoostingRegressor
+from sklearn.ensemble import RandomForestClassifier, AdaBoostRegressor, GradientBoostingRegressor, RandomForestRegressor
 from sklearn.linear_model import LogisticRegression,LinearRegression, SGDClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn import svm, grid_search
@@ -42,12 +42,13 @@ def addPredictionAndClassifierToList(predictions,classifier,predicted_Y):
     class_name = classNameForClassifier(classifier)
     prediction = pd.DataFrame(predicted_Y,columns=[class_name])
     predictions = pd.concat([predictions,prediction],axis=1)
+    import pdb; pdb.set_trace()  # breakpoint 9d24d050 //    
     return predictions
 
 dataset = pd.read_csv(ROOT_DIR+"data/structured/training_data_match_statistics.csv")
 dataset = dataset.drop(dataset.columns[0],axis=1)
 
-classifiers = [RandomForestClassifier(),LogisticRegression()]
+classifiers = [RandomForestRegressor(),LogisticRegression()]
 predictions = pd.DataFrame()
 
 for classifier in classifiers:
