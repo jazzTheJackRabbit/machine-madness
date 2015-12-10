@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+
+\title{Machine Madness}
+\author{
+  Amogh Param\\
+  704434779\\
+  \texttt{aparam@cs.ucla.edu}
+  \and
+  Sravani Kamisetty\\
+  304414410\\
+  \texttt{skamisetty@cs.ucla.edu}
+}
+\date{December 2015}
+
+\begin{document}
+    \maketitle
+    
+    \begin{multicols}{2}
+    \section*{Abstract}  
+	March Madness is the NCAA Men’s Division I Basketball Championship tournament that happens every March. The tournament is organized by the National Collegiate Athletic Association (NCAA). It has 64 tournament matches. The aim of this project is to come up with a good machine learning based model has the best classification accuracy in predicting the march madness bracket.
+   
+    \section{Introduction}
+    Since 1939, the best colleges and universities across the United States have participated in a yearly tournament called the NCAA Men’s Basketball Championship. This basketball tournament has become one of the most popular and famous sporting tournaments in the United States. Millions of people around the country participate in contests in which the participants make their best guesses on who will win each game throughout the tournament. These types of contests have become so popular that more than 11 million brackets were filled out on ESPN.com in 2014. One billion dollars was even being rewarded to anyone who achieved a ”perfect bracket” (guessed every game correctly). Every game is unpredictable, and the teams that are supposedly the ”better team” sometimes end up losing. This is called an upset in basketball lingo, and happens regularly throughout the tournament. Because of these upsets, it can be difficult to correctly guess the winner of each game. The tournament can be so unpredictable that the time period over which the tournament runs has been termed March Madness. Since there are 64 games played in the NCAA tournament, it is nearly impossible to predict a perfect bracket. High Point Enterprise, a morning paper from North Carolina, stated that ”you have a much greater chance of winning the lottery, shooting a hole-in-one in golf or being struck by lightning”. They estimated that the chances of predicting a perfect bracket are 1 in 9.2 quintillion. It became clear that developing a model that provided perfect win/loss classification was unrealistic, so instead we focused on improving the prediction accuracy of individual games. The problem at hand is not classification of individual teams, but rather predicting the outcome of a match between any two teams. 
+    
+    \subsection{Objectives}
+    Our goal was to identify key factors in predicting NCAA tournament wins and to find a
+model that would perform well in the Kaggle competition.
+The Kaggle competition had two stages:
+\begin{list}{•}{•}
+\item Predict outcomes of the 2016 NCAA Tournament
+\end{list}
+    For each stage we submitted a list $\hat{y}$ of probabilities (values between 0 and 1) that each team in the tournament would defeat every other team in the tournament, regardless of whether this match-up actually occurs. For this year, this was m = 2278 predictions 2. We were judged based on the log-loss L(y|$\hat{y}$), or the predictive binomial deviance, of the games that actually occurred.
+    \linebreak 
+    \linebreak 
+    $L(y|\hat{y}) = -1/n * \sum_{i=1}^{n}[y_i.log(\hat{y_i} + (1-y_i). log(1-\hat{y_i}))]$ where n is the actual number of games played in the tournament (67), $y_i$ is the actual binary outcome of each game, and $\hat{y_i}$ is the corresponding submitted probability. If the opponents
+in game i are teams A and B, then ˆyi(A,B) is the predicted probability that team A beats team
+B, and ˆyi(B,A) = 1−yˆi(A,B).
+    
+
+
+	\end{multicols}  
+\end{document}
