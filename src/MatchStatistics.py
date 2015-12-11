@@ -15,7 +15,6 @@ def create(season_data_file_path,season_tournament_file_path,team_statistic_file
 	all_teams = pd.read_csv(ROOT_DIR+"data/raw/teams.csv")
 	
 	all_tournament_seasons = np.unique(tournament_statistics.season)
-
 	training_data = pd.DataFrame()
 
 	for season in all_tournament_seasons:
@@ -47,13 +46,18 @@ def create(season_data_file_path,season_tournament_file_path,team_statistic_file
 		    match_vector = team1_np_vector - team2_np_vector
 
 		    #Take the difference vector and append it with the label it with 0 if first team won, and 1 if the second team won
+		    team1 = winning_team_id if (winning_team_id < losing_team_id) else losing_team_id
+		    team2 = winning_team_id if (winning_team_id > losing_team_id) else losing_team_id
+		    match_team1_id = pd.DataFrame([team1],columns=["team1"])
+		    match_team2_id = pd.DataFrame([team2],columns=["team2"])
 		    match_statistics = pd.DataFrame(match_vector,columns=team1_statistic.columns[2:])
 		    match_output_label = pd.DataFrame([output_label],columns=["winningTeam"])
 
-		    row_vector_for_training_data = pd.concat([match_statistics,match_output_label],axis=1)
+		    row_vector_for_training_data = pd.concat([match_team1_id,match_team2_id,match_statistics,match_output_label],axis=1)
 		    row_vector_for_training_data.season = season
 
 		    # Append to training-data-for-season
 		    training_data = training_data.append(row_vector_for_training_data,ignore_index=True)
 
 	training_data.to_csv(ROOT_DIR+training_data_match_stats_file_path)
+	print("Match Stats generated and Saved successfully @ "+ROOT_DIR+training_data_match_stats_file_path)
