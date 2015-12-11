@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage[style=numeric,backend=bibtex]{biblatex}
+\usepackage{graphicx}
+\usepackage{caption}
 
 \addbibresource{refsKami.bib}
 
@@ -59,10 +61,9 @@ the odds of forecasting a perfect bracket are astronomical. Each game win/lose h
 	
 	\section{Data}
 	The main source of Data is Kaggle. The data is made availabe as a bunch of .csv files. Kaggle provides regular season wins, losses, point differences, dates, and game locations (home/away) as well as tournament wins, losses, point differences, seeds, and dates of games. This data comes from the sesonal and tournament mactches for the years 2005-2015. \cite{1}. The other important source of data is player level statistics from ESPN.
-	
-	\subsection{Data Fields}
-	The data provided by Kaggle can be broadly classified into tournament level and season level statistics and also by compactness of the data. The most important fields in this dataset which could be potential feature set are listed below.  \cite{1}
-	
+	\linebreak 
+	The data provided by Kaggle can be broadly classified into team statistics and match statistics \cite{1}
+	\subsection{Match Statistics}
 	This data fields identifying the different seasons included in the historical data, along with certain season-level properties are:
 
 \begin{list}{Field}{}
@@ -123,10 +124,30 @@ wteam" - this identifies the id number of the team that won the game
 \item
 "weakseed" - this indicates the expected weaker-seeded team that plays in this game, assuming all favored teams have won so far.
 \end{list}
-
+	
+	\subsection{Team Statistics}
+	The data provided by Kaggle also has certain statistics that describe the team itself. This represents a cumulative performance of a team for the last 10 years. Some of the most important team statistics are:
+	\begin{list}{•}{•}
+\item
+	Two point field goals made 
+\item
+Three point attempts
+\item
+Assists per game
+\item
+Average scoring margin
+\item
+Blocks for season
+\item
+Defensive rating
+\item
+Field goal percentage
+\item
+Total free throw attempts
+	\end{list}
 	\subsection{Scale of the Data}
 	Kaggle provides data from the NCAA seaons and tournaments between 2005 and 2015. The statistics below give an idea about the scale of the dataset.	
-\begin{list}{•}{•}
+\begin{list}{•}
 \item
 Number of seasons: 10 seasons
 \item
@@ -140,10 +161,85 @@ Total number of matches in the training set ~ 50,640
 \item
 Total number of matches in testing set : 64
 \item
-Total number of columns in the training set/testing set ~ numeber of data fields or features = 25
+Total number of columns in the training set/testing set ~ numeber of data fields or features $\approx$ 40
 \end{list}
 
 	\section{Features}
-		 
-	\end{multicols}  
+	As described in the section 3.a and 3.2 the data provided by Kaggle has a lot statistics compiled for every
+basketball game, so it was difficult to decide which ones to use. Hence we used all the feautures initially to construct a training set. Dimensionality reduction was then performed on the training set to pick the most important features.
+
+	\subsection{Feature Representation}
+	The final goal of the Kaggle March Madnness competition is bracket prediction. This means that we have to predict the outcome of the 64 tournament mactches that happen in NCAA 2016. The best bet to do this is if we have a training set that represents the matches and labels that represent the outcomes of these matches. All the data statistics discussed in the section 3.1 and 3.2 can be represented in 2 ways to achieve this goal
+\begin{list}{•}	
+\item
+	Vector of difference: Each match is represented by the vector of difference between the induvidual statistics of the 2 teams. This essentially means that the training vector \linebreak 
+	$X  =  mod(Statistics of Team A $
+	\linebreak	
+	$- Statistics of Team B)$. 
+	\linebreak
+	The result or the label vector Y is represented by 0/1. The result is 1 if Team A beats Team B 
+and 0 if Team B beats Team A.
+	
+	\item 
+	Concatenated Vector of both the team statistics: In this representation the statistics of a match is represented by keeping both Team A and Team B statistics in the vecotor next to each other. Hence the training vector 		\linebreak
+	$X = [Statistics of Team A , $
+	\linebreak	
+	$Statistics of Team B]$.
+	\linebreak
+	The result or the label set representation is same as the previous case.
+	\end{list}
+	
+	\subsection{Additional Features}
+	A few additional features were computed separately and added to the training set for every match. These additional features are obtained by applying algorithms to already existing team and match statistics and considering the value given by the algorithm as a feature itself. 
+\subsubsection{Team Rank}
+A method similar to PageRank algorithm called the GEM method was applied to the NCAA dataset \cite{3}.  The margin of victory $(v1-v2)$ is used as the weight the “link” between two football teams, where v1 and v2 are the teams’ scores against each other. Then the process same as PageRank is followed to make it row stochastic. This will help us obtain the final ranking. Below is an example of the team Rank calculation.
+	
+	\begin{center}
+	  \includegraphics[height=15mm]{images/TeamRankMatrix.png}
+	  \captionof{figure}{Team Rank Matrix}
+	\end{center}
+	This team rank matrix is represented as a graph.
+	\begin{center}
+	  \includegraphics[height=25mm]{images/TeamRankGraph.png}
+	  \captionof{figure}{Team Rank graph}
+	\end{center}
+Next, we continue to make it row stochastic and follow the PageRank algorithm to get the final ranking. We obtain (0.330 0.252 0.087 0.332) for the PageRank vector, which produces the ranking 1. CAR, 2. NO, 3. PHL, 4. ATL.
+
+\subsubsection{Statistical Features}
+	Statistical Features on Player Statistics: One more extra feature that was added to the training set at the lisr of top players that belong to every team. Only the top players that are playing a particular match are considered in the training set.
+
+	\section{Architecture}
+	The project can be divided into four important parts. They are data collection, feature extraction, machine learning model selection, predicitions step. Figure 3 is a pictorial representation of the architecture of the project. Programming languages python and the machine learning librares pandas, scikitlearn, tensorflow were used in the implementation of the project.	
+	\begin{center}
+	  \includegraphics[height=110mm,width=50mm]{images/Architecture.png}
+	  \captionof{figure}{Architecture}
+	\end{center}
+	
+	\section{Dimensionality Reduction}
+	\section{Machine learning Models}
+	For reasons stated above in section 3, we wanted to use many different machine learning techniques and leverage them against one another so that we would gain the benefits from each and hopefully mitigate the weaknesses of each. We used Support Vector Machines, Random Forests, and Logistic Regression for the base level models.
+	
+	\subsection{Support Vector Machines}
+	Each game in the training set X has a series of characteristics based on the difference in team statistics and a label yi (win or loss). These can be plotted in a p-dimensional Euclidean space. The support vector machine then finds the hyperplanes $w·X-b = 1$ and $w ·X = 0$ with the greatest distance between them that partitions the space such that wins and losses are separated (where w is the normal vector to the plane and $\left \| w \right \|/b$ is the offset of the hyperplane from the origin along w.)\cite{4}. Let the output of an SVM be $f(X)$. Then
+	\linebreak
+	\linebreak
+$\hat{y_{i1}}(A,B)  = Pr(y_i = 1| f(X)) = 1/ 1+exp(Q * f(X) +V)$,
+	\linebreak
+	\linebreak
+where Q and V are parameters chosen through maximum likelihood estimation from a training set made up of coordinates $(f(X)_i, y_i)$.\cite{4}
+
+	\subsection{Decision Trees and Random Forests}
+	Decision trees split a data set using a set of binary rules that make up the branches of the tree. Sets further down in the tree contain increasingly similar class labels. The objectives are to produce the purest sets possible and to be able to classify any object based on comparison of features to the rules in the tree. A random forest is a bootstrap of the decision tree. Like in the standard bootstrap method, the available training data can be resampled to build many different decision trees. Additionally, the random forest method takes a random subset of available predictors to build its new decision tree. By resampling both the cases and the input
+variables, many decision trees are grown. Final classification decisions are made based on a majority rule of the many decision trees. Given a decision tree with height k, let $Pr(r_d)$ be the probability associated with node d on branch path r. Then the probability of success for a new case is:
+	$y_i(A,B)=\prod_{d} Pr(r_d)$
+	\linebreak
+	\linebreak
+For the random forest of m trees where $Pr(r_{(d, j)}
+)$ is the probability associated with node
+d on branch path r on decision tree j, the probability of success for a new case is:
+	$y_i(A,B)=\sum_{j}\prod_{d} Pr(r_{(d,j)})$
+	\linebreak
+	\linebreak
+	
+	\end{multicols} 
 \end{document}
