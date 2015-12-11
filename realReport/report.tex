@@ -238,8 +238,18 @@ For the random forest of m trees where $Pr(r_{(d, j)}
 )$ is the probability associated with node
 d on branch path r on decision tree j, the probability of success for a new case is:
 	$y_i(A,B)=\sum_{j}\prod_{d} Pr(r_{(d,j)})$
-	\linebreak
-	\linebreak
-	
+	\subsection{Logistic Regression}
+	 Logistic regression is a statistical method for analyzing a dataset in which there are one or more independent variables that determine an outcome. The outcome is measured with a dichotomous variable (in which there are only two possible outcomes). In logistic regression, the dependent variable is binary or dichotomous, i.e. it only contains data coded as 1 (TRUE, success) or 0 (FALSE, failure). In our case the dependent variable is the outcome of the match and independent variables are the features themselves. Logistic Regressio uses a logit function which measures the log odds of Team A winning a match against Team B: logit(p) = ln(p/(1-p)) where P is the probobality of A winning. 
+	 
+	 \subsection{Ensemble Model}
+	 Ensemble methods are commonly used in classification problems. These methods allow predictions based on different models to be combined, often using a type of voting schema, to determine one final prediction. The benefit to using an ensemble method is that we can
+leverage the information gleaned from different methods, combining the benefits from each method while hopefully negating or minimizing the flaws in each. Ensemble methods have been used to combine predictions from different machine learning techniques in order to increase stability and to more accurately classify test cases. The combination of methods can also reduce the variance of the predictions as they are less sensitive to irregularities in a training set.\cite{4}
+	In order to ensure that our predictions were in (0,1), we fit a logistic regression model where each explanatory variable is a prediction from one machine learning technique, and the response is the binary outcome.
+Our model takes the form:
+\linebreak
+\linebreak
+$y_i(A,B) = 1/e^{-(\beta_0 + \beta_1y_1(A,B) +..\beta_3y_3(A,B) + \varepsilon )}$
+where $y_1$ is from Support Vector machines, $y_2$ is from Random Forests and $y_3$ from Logistic Regression.
+	 
 	\end{multicols} 
 \end{document}
