@@ -15,10 +15,14 @@ def getPredictionsFromClassifier(classifier,training_X,training_Y,testing_X,test
     # Training    
     classifier.fit(training_X,np.ravel(training_Y))
     predicted_Y = classifier.predict(testing_X)
-    predicted_probabilities_Y = classifier.predict_proba(testing_X)[:,0]
 
-#     print(classification_report(predicted_Y.round().astype(int),testing_Y))
-#     print(accuracy_score(predicted_Y.round().astype(int),testing_Y))
+    if(hasattr(classifier,"predict_proba")):
+        predicted_probabilities_Y = classifier.predict_proba(testing_X)[:,0]
+    else:
+        predicted_probabilities_Y = predicted_Y
+
+    print(classification_report(predicted_Y.round().astype(int),testing_Y))
+    print(accuracy_score(predicted_Y.round().astype(int),testing_Y))
 
     return predicted_Y,predicted_probabilities_Y
 
@@ -50,6 +54,10 @@ training_Y = training_data[training_data.columns[-1]]
 testing_X = testing_data[testing_data.columns[startingFeatureIndex:len(testing_data.columns)-1]].fillna(0)
 testing_Y = testing_data[testing_data.columns[-1]]
 
+print("***************************")
+print("EVALUATION ON TRAINING DATA")
+print("***************************")
+
 testing_X = training_X
 testing_Y = training_Y
 
@@ -65,6 +73,10 @@ training_Y = pd.DataFrame(training_Y.as_matrix(),columns=["winningTeam"])
 ensemble_training_X = prediction_probabilities_for_winning
 ensemble_training_Y = training_Y
 
+print("***************************")
+print("EVALUATION ON TESTING DATA")
+print("***************************")
+
 testing_X = testing_data[testing_data.columns[startingFeatureIndex:len(testing_data.columns)-1]].fillna(0)
 testing_Y = testing_data[testing_data.columns[-1]]
 
@@ -73,9 +85,17 @@ prediction_probabilities_for_winning = pd.DataFrame()
 for classifier in classifiers:
     predicted_Y, predicted_probabilities_Y = getPredictionsFromClassifier(classifier,training_X,training_Y,testing_X,testing_Y)
     prediction_probabilities_for_winning = addPredictionAndClassifierToList(prediction_probabilities_for_winning,classifier,predicted_probabilities_Y)   
-    
+
+# 
+# ENSEMBLE CLASSIFIER
+# 
+
 ensemble_testing_X = prediction_probabilities_for_winning
 ensemble_testing_Y = testing_Y    
+
+print("***************************")
+print("ENSEMBLE")
+print("***************************")
 
 ensemble_classifier = LogisticRegression()
 ensemble_classifier.fit(ensemble_training_X,np.ravel(ensemble_training_Y))

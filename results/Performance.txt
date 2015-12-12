@@ -1,0 +1,63 @@
+***************************
+ENSEMBLE
+***************************
+             precision    recall  f1-score   support
+
+          0       0.74      0.67      0.70        42
+          1       0.52      0.60      0.56        25
+
+avg / total       0.65      0.64      0.65        67
+
+0.641791044776
+
+***************************
+EVALUATION ON TESTING DATA
+***************************
+             precision    recall  f1-score   support
+
+          0       0.79      0.62      0.70        48
+          1       0.38      0.58      0.46        19
+
+avg / total       0.67      0.61      0.63        67
+
+0.611940298507
+             precision    recall  f1-score   support
+
+          0       0.55      0.68      0.61        31
+          1       0.66      0.53      0.58        36
+
+avg / total       0.61      0.60      0.60        67
+
+0.597014925373
+
+***************************
+EVALUATION ON TRAINING DATA
+***************************
+             precision    recall  f1-score   support
+
+          0       0.99      0.96      0.98       109
+          1       0.96      0.99      0.97        92
+
+avg / total       0.98      0.98      0.98       201
+
+0.975124378109
+             precision    recall  f1-score   support
+
+          0       0.76      0.79      0.78       103
+          1       0.77      0.74      0.76        98
+
+avg / total       0.77      0.77      0.77       201
+
+0.766169154229
+
+precision    recall  f1-score   support
+
+          0       1.00      1.00      1.00       106
+          1       1.00      1.00      1.00        95
+
+avg / total       1.00      1.00      1.00       201
+
+1.0
+
+Log Loss
+[[ 0.62444662]]
