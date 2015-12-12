@@ -268,8 +268,13 @@ $y_i(A,B) = 1/e^{-(\beta_0 + \beta_1y_1(A,B) +..\beta_3y_3(A,B) + \varepsilon )}
 \end{center}
 where $y_1$ is from Support Vector machines, $y_2$ is from Random Forests and $y_3$ from Logistic Regression.
 	
-	\section{Performance and Evaluation}
+	\section{Evaluation}
 	To evaluate the performance of our models, we use a number of performance statistics. Primarily, we use:
+	
+	\begin{center}		
+	\csvautotabular{result_accuracy.csv}	
+	\captionof{table}{Snapshot of the extracted team level data}
+	\end{center}
 	
 	\begin{itemize}
 	\item Accuracy
@@ -279,12 +284,61 @@ where $y_1$ is from Support Vector machines, $y_2$ is from Random Forests and $y
 	\item Log Loss
 	\end{itemize}
 	
-	\subsection{Accuracy}
-	\subsection{Precision}
-	\subsection{Recall}
-	\subsection{F1 Measure}
-	\subsection{Log Loss}
+	\subsection{Performance}
+	From the tables that follow, we see that our classifiers perform very well when we test the learned model on the training data. On the testing data, the classifiers do not perform as good as they did on the training data, but they still perform fairly well, definitely better than a random coin flip.
 	
+	\begin{center}		
+	\csvautotabular{result_RF-training.csv}	
+	\captionof{table}{Random Forest on Training Data}
+	\end{center}
+	
+	\begin{center}		
+	\csvautotabular{result_LR-training.csv}	
+	\captionof{table}{Logistic Regression on Training Data}
+	\end{center}
+	
+	\begin{center}		
+	\csvautotabular{result_SVC-training.csv}	
+	\captionof{table}{Support Vector Machines on Training Data}
+	\end{center}
+	
+	\begin{center}		
+	\csvautotabular{result_RF-test.csv}	
+	\captionof{table}{Random Forest on Testing Data}
+	\end{center}
+	
+	\begin{center}		
+	\csvautotabular{result_LR-test.csv}	
+	\captionof{table}{Logistic Regression on Testing Data}
+	\end{center}	
+	
+	\begin{center}		
+	\csvautotabular{result_ensemble.csv}	
+	\captionof{table}{Ensemble Learning on Testing Data}
+	\end{center}	
+
+	We see from the above tables that the random forest classifier performs the best among the individual classifiers on the testing data and the ensemble learner does make a few gains over the random forest classifier. Thereby it does improve the prediction ability by combining the underlying base models. 	
+	\linebreak
+	
+	Although, we observe that since the models perform extremely well on the training data and not as well on the testing data. This is primarily because the models overfit to the training data. 
+		
+	\subsection{Log Loss}
+
+	In addition to the performance metrics, we also evaluated our performance on a log loss function, provided by Kaggle to evaluate how confident our model makes predictions. The loss function is:
+	
+	    \begin{center}
+	    $L(y|\hat{y}) = -1/n * \sum_{i=1}^{n}[y_i.log(\hat{y_i} + (1-y_i). log(1-\hat{y_i}))]$ 
+	    \end{center}
+	
+	 where, $y$ represents the actual 1 or 0 outcomes and $\hat{y}$ represents model prediction probability values. 
+	 
+	 \begin{center}		
+	\csvautotabular{result_log_loss.csv}	
+	\captionof{table}{Log Loss Benchmarks}
+	\end{center}
+	
+	We see from the table below that, although we are way off the best performing score, we still did better than 2 of the benchmarks. It seems like just following the seed predictions leads to better performance than our classifier. These issues and areas of improvement are discussed in the following section.
+	 
 	\section{Conclusion}
 	\section{FutureWork}	 
 Even with large amounts of statistical information, there are some parts of a basketball game you simply cannot predict. Injuries cannot be forecast, and the mental state of players playing the game cannot be observed. However, these things can drastically affect the outcome of a basketball match. Perfect brackets will therefore continue to be impossible to calculate, no matter how much data is provided to the learning models.
