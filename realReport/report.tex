@@ -4,6 +4,7 @@
 \usepackage[style=numeric,backend=bibtex]{biblatex}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{setspace}
 
 \addbibresource{refsKami.bib}
 
@@ -271,5 +272,13 @@ Average number of players who play consistently
 All of this data is expected to play a role in how teams perform. However, this type of data was out of our scope to accumulate. Organizations with more access to this type of data will be able to study whether these features have a profound effect on the success of a basketball team. This research would also benefit greatly with more data. It is recommended that much more data be gathered to help avoid overfit. However, since basketball continually changes throughout the years, using data from more than ten years back is also useless. We would also recommend experimenting with using several feature reduction techniques together as opposed to using the reduction techniques one by one. This is something we did not explore as a part of the project.
 
 \paragraph{} The overfitting problem can be solved by dividing the training set into 2 parts - training and evaluation. In this way the model can be built using training set, and fine tuned using evalution set. It can also be reduced by using some kind of regularisation in the model. It could L1 or L2 reguralisation depending on the machine learning model and parameters.
+    
+    \nocite{*}
+	\begingroup
+	\setstretch{0.8}
+	\setlength\bibitemsep{10pt}
+	\printbibliography
+	\endgroup
+	
 	\end{multicols} 
 \end{document}
