@@ -111,11 +111,11 @@ the odds of forecasting a perfect bracket are astronomical. Each game win/lose h
 
 	\end{multicols}  	
 	\begin{center}
-	\captionof{table}{Snapshot of the parsed match level data}
+	\captionof{table}{Snapshot of the extracted team level data}
 	\csvautotabular{table_2_match_data.csv}	
 	\end{center}
 	\begin{center}	
-	\captionof{table}{Snapshot of the extracted team level data}
+	\captionof{table}{Snapshot of the training data used in the models}
 	\csvautotabular{table_3_team_data.csv}	
 	\end{center}
     	\begin{multicols}{2} 
@@ -141,7 +141,7 @@ Field goal percentage
 Total free throw attempts
 	\end{list}
 	\subsection{Scale of the Data}
-	Kaggle provides data from the NCAA seaons and tournaments between 2005 and 2015. The statistics below give an idea about the scale of the dataset.	
+	Kaggle provides data from the NCAA seasons and tournaments between 2005 and 2015. The statistics below give an idea about the scale of the dataset.	
 \begin{list}{•}
 \item
 Number of seasons: 10 seasons
@@ -156,7 +156,7 @@ Total number of matches in the training set ~ 50,640
 \item
 Total number of matches in testing set : 64
 \item
-Total number of columns in the training set/testing set ~ numeber of data fields or features $\approx$ 40
+Total number of columns in the training set/testing set ~ number of data fields or features $\approx$ 40
 \end{list}
 
 	\section{Implementation}
@@ -166,19 +166,32 @@ Total number of columns in the training set/testing set ~ numeber of data fields
 	As described in the section 3.1 and 3.2 the data provided by Kaggle has a lot statistics compiled for every
 basketball game, so it was difficult to decide which ones to use. Hence we used all the features initially to construct a training set. 
 	\subsubsection{Feature Representation}
-	Using the match level statistics provided by Kaggle, we extracted the team level data for every team in every season.
-	 The final goal of the Kaggle March Madness competition is bracket prediction. This means that we have to predict the outcome of the 64 tournament matches that happen in NCAA 2015. The best bet to do this is if we have a training set that represents the matches and labels that represent the outcomes of these matches. All the data statistics discussed in the section 3.1 and 3.2 can be represented in 2 ways to achieve this goal
+	Using the match level statistics provided by Kaggle, we extracted the team level data for every team in every season. Table 2 shows a small snapshot of this data, but it only contains 4 of the 33 features that we actually use in the dataset. Each of the values for the teams represent the average statistic of that team for that specific season. For example, 'wscore' represents the average points a team scored in a game in which it was the winning team. A statistic starting with a 'w' represents that statistic when the team was a winning team. Similarly, the 'l' represents a statistic when the team was a losing team. \linebreak
+	
+	Using the above team level statistic data and the matchup data, we create the training set for the machine learning models. For every match up, we look at the teams involved and their corresponding statistics in the team level statistics that we created previously.  For each team, we look at all the matches they won, and compute the average of the 'w' statistics. Similarly, we look at the matches that the team lost and compute the average of the 'l' statistics for that team. 
+	\linebreak 
+	
+	\end{multicols}  	
+	\begin{center}
+	\begin{center}
+	\includegraphics[width=160mm]{images/1_architecture.png}
+	\captionof{figure}{Architecture}
+	\end{center}
+	\end{center}
+    	\begin{multicols}{2} 
+	
+	We then combine the two vectors for a matchup for a specific team which results in the team vector representing the average statistics of the teams involved in the matchup. This results in two team vectors for every matchup. We can use two approaches to represent these vectors as data points in our training dataset, as follows:
 \begin{itemize}	
 \item
-	Vector of difference: Each match is represented by the vector of difference between the induvidual statistics of the 2 teams. This essentially means that the training vector 
+	Vector of differences: Each match is represented by the vector of difference between the individual team vectors. This essentially means that the training vector/data point is represented as:
 	\newline \newline 
 	$X  =  mod(Team A Stats - Team B Stats)$. 
 	\newline \newline 
 	The result or the label vector Y is represented by 0/1. The result is 1 if Team A beats Team B 
-and 0 if Team B beats Team A.
+and 0 if Team B beats Team A. 	
 	
 	\item 
-	Concatenated Vector of both the team statistics: In this representation the statistics of a match is represented by keeping both Team A and Team B statistics in the vecotor next to each other. Hence the training vector 
+	Concatenated Vector of both the team statistics: In this representation the statistics of a match is represented by keeping both Team A and Team B statistics in the vector next to each other. Hence the training vector 
 	\newline \newline 
 	$X  =  [Team A Stats, Team B Stats]$. 
 	\newline 
@@ -186,8 +199,12 @@ and 0 if Team B beats Team A.
 	The result or the label set representation is same as the previous case.
 	\end{itemize}
 	
+	In our implementation, we use the first 'Vector of differences' approach to represent each data point for the training model. When we consider a match between two teams, we sort them by their ids and then take their differences. As mentioned above, if the first team wins, we label the outcome as 0, and 1 if the second team wins. This gives us a distribution of target labels to predict.
+	
 	\subsubsection{Additional Features}
-	A few additional features were computed separately and added to the training set for every match. These additional features are obtained by applying algorithms to already existing team and match statistics and considering the value given by the algorithm as a feature itself. 
+	We considered applying a few additional ideas to apply different feature extraction algorithms to the existing team and match statistics and consider the output from the algorithm as a feature itself. 
+	
+	
 \paragraph{\textit{Team Rank}}
 A method similar to PageRank algorithm called the GEM method was applied to the NCAA dataset \cite{3}.  The margin of victory $(v1-v2)$ is used as the weight the “link” between two football teams, where v1 and v2 are the teams’ scores against each other. Then the process same as PageRank is followed to make it row stochastic. This will help us obtain the final ranking. Below is an example of the team Rank calculation.
 	
@@ -203,16 +220,11 @@ A method similar to PageRank algorithm called the GEM method was applied to the 
 Next, we continue to make it row stochastic and follow the PageRank algorithm to get the final ranking. We obtain (0.330 0.252 0.087 0.332) for the PageRank vector, which produces the ranking 1. CAR, 2. NO, 3. PHL, 4. ATL.
 
 \subsubsection{Statistical Features}
-	Statistical Features on Player Statistics: One more extra feature that was added to the training set at the lisr of top players that belong to every team. Only the top players that are playing a particular match are considered in the training set.
-
+	Statistical Features on Player Statistics: One more extra feature that was added to the training set at the list of top players that belong to every team. Only the top players that are playing a particular match are considered in the training set.	
+	
 	\section{Architecture}
 	The project can be divided into four important parts. They are data collection, feature extraction, machine learning model selection, predicitions step. Figure 3 is a pictorial representation of the architecture of the project. Programming languages python and the machine learning librares pandas, scikitlearn, tensorflow were used in the implementation of the project.	
-	\begin{center}
-	  \includegraphics[height=110mm,width=50mm]{images/Architecture.png}
-	  \captionof{figure}{Architecture}
-	\end{center}
 	
-	\section{Dimensionality Reduction}
 	\section{Machine learning Models}
 	For reasons stated above in section 3, we wanted to use many different machine learning techniques and leverage them against one another so that we would gain the benefits from each and hopefully mitigate the weaknesses of each. We used Support Vector Machines, Random Forests, and Logistic Regression for the base level models.
 	
