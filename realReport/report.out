@@ -18,3 +18,13 @@
 \BOOKMARK [1][-]{section.6}{Machine learning Models}{}% 18
 \BOOKMARK [2][-]{subsection.6.1}{Support Vector Machines}{section.6}% 19
 \BOOKMARK [2][-]{subsection.6.2}{Decision Trees and Random Forests}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.3}{Logistic Regression}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.4}{Ensemble Model}{section.6}% 22
+\BOOKMARK [1][-]{section.7}{Performance and Evaluation}{}% 23
+\BOOKMARK [2][-]{subsection.7.1}{Accuracy}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.2}{Precision}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.3}{Recall}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.4}{F1 Measure}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.5}{Log Loss}{section.7}% 28
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 29
+\BOOKMARK [1][-]{section.9}{FutureWork}{}% 30
